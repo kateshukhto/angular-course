@@ -1,0 +1,28 @@
+<input type="text"
+       class="border py-2 px-4 mb-2 w-full"
+       placeholder="Filter products..."
+       [(ngModel)]="term"
+>
+
+<!--  <app-product [products]="products[0]"></app-product>-->
+<!--  <app-product [products]="products[1]"></app-product>-->
+
+<p *ngIf="loading" class="text-center text-lg text-red-800"> Loading ...</p>
+
+<div *ngIf="productsService.products">
+  <app-product
+    *ngFor="let product of productsService.products | filterProducts: term"
+    [products]="product"
+  ></app-product>
+</div>
+
+<app-modal *ngIf="modalService.isVisible$ | async" title="Create product">
+  <app-create-product></app-create-product>
+</app-modal>
+
+<button
+  class="rounded-full bg-red-500 px-4 py-2 fixed right-5 bottom-5 text-lg text-white"
+  (click)="modalService.open()"
+>
+  +
+</button>

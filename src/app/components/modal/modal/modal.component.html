@@ -1,0 +1,9 @@
+<div
+  class="bg-black/50 w-full top-0 right-0  left-0 bottom-0 fixed"
+  (click)="modalService.close()"
+></div>
+
+<div class="bg-white absolute p-6 w-1/2 rounded top-16 left-1/2 -translate-x-1/2 p-6">
+  <h2>{{ title }}</h2>
+  <ng-content></ng-content>
+</div>
